@@ -18,6 +18,6 @@ def register_lost(request):
             form.save()  # ensures that we save the user info to our db.
             return redirect('FRONTEND.html')
     else:
-        form = LostRegisterForm()  # Create an instance of the user registration form. blank form.
+        form = LostRegisterForm()  # Create a blank lost item form.
 
     return render(request, 'FRONTEND.html', {'form': form})

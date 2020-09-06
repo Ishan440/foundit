@@ -6,13 +6,16 @@ from PIL import Image
 
 # Create your models here.
 
-
+# can use listing as a parent class but since lost and found have almost the same forms
+# i don't see a need. Although might be good to use inheritance when upgrading to a real
+# time database in order to notify users who have lost an item about stufff that's been found.
 class Listing(models.Model):
     Title = models.CharField(max_length =100)
     Description = models.TextField()
     Date = models.DateTimeField(default=timezone.now)
     Image = models.ImageField(default='sample', upload_to='lost_pics')
     Place = models.CharField(max_length =100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.user.username} Profile'
     def save(self):
